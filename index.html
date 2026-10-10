@@ -29,7 +29,7 @@
         .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-top: 5px; }
 
         .nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; display: flex; border-top: 1px solid #ccc; height: 60px; z-index: 100; }
-        .nav-btn { flex: 1; border: none; background: transparent; font-size: 0.7rem; font-weight: bold; color: #666; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; white-space: nowrap; padding: 0 2px; }
+        .nav-btn { flex: 1; border: none; background: transparent; font-size: 0.75rem; font-weight: bold; color: #666; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; white-space: nowrap; padding: 0 2px; }
         .nav-btn.active { color: #2563eb; }
     </style>
 </head>
@@ -78,10 +78,20 @@
             </div>
         </div>
 
-        <!-- ACCOUNT PAGE -->
-        <div id="account" class="section">
-            <h3>Admin - Add Item</h3>
-            <div style="background: white; padding: 15px; border-radius: 8px; margin-top: 15px;">
+        <!-- SECRET ADMIN PAGE -->
+        <div id="admin" class="section">
+            <h3>Secret Admin Panel</h3>
+            
+            <div id="adminLoginBox" style="background: white; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                <p style="margin-bottom: 10px; font-weight: bold;">Enter Admin PIN</p>
+                <div class="form-group">
+                    <input type="password" id="adminPinInput" placeholder="PIN dalo">
+                </div>
+                <button class="btn" onclick="verifyAdmin()">Unlock</button>
+            </div>
+
+            <div id="adminFormBox" style="background: white; padding: 15px; border-radius: 8px; margin-top: 15px; display: none;">
+                <p style="color: green; font-weight: bold; margin-bottom: 10px;">✓ Admin Access Unlocked</p>
                 <div class="form-group">
                     <input type="text" id="pTitle" placeholder="Item Name">
                 </div>
@@ -91,7 +101,7 @@
                 <div class="form-group">
                     <input type="text" id="pImg" placeholder="Image URL">
                 </div>
-                <button class="btn" onclick="addItem()">Save Item</button>
+                <button class="btn" onclick="addItem()">Add Item to Website</button>
             </div>
         </div>
     </div>
@@ -101,15 +111,17 @@
         <button class="nav-btn active" id="btn-home" onclick="goTab('home', this)">🏠 Home</button>
         <button class="nav-btn" id="btn-cart" onclick="goTab('cart', this)">🛒 Cart (<span id="count">0</span>)</button>
         <button class="nav-btn" id="btn-contact" onclick="goTab('contact', this)">📞 Contact</button>
-        <button class="nav-btn" id="btn-account" onclick="goTab('account', this)">⚙️ Admin</button>
     </div>
 
     <script>
-        var items = JSON.parse(localStorage.getItem('ng_items')) || [
+        var ADMIN_SECRET = "7224"; 
+
+        var defaultItems = [
             { id: 1, name: "Casual Shirt", price: 599, img: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400" },
             { id: 2, name: "Denim Jeans", price: 999, img: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400" }
         ];
 
+        var items = JSON.parse(localStorage.getItem('ng_saved_items')) || defaultItems;
         var myCart = [];
 
         function loadProducts() {
@@ -138,6 +150,22 @@
             if(btn) btn.classList.add('active');
 
             if(tabId === 'cart') showCart();
+        }
+
+        function checkHashRoute() {
+            if(window.location.hash === '#admin') {
+                goTab('admin', null);
+            }
+        }
+
+        function verifyAdmin() {
+            var val = document.getElementById('adminPinInput').value;
+            if(val === ADMIN_SECRET) {
+                document.getElementById('adminLoginBox').style.display = 'none';
+                document.getElementById('adminFormBox').style.display = 'block';
+            } else {
+                alert("Galat PIN hai!");
+            }
         }
 
         function addCart(id) {
@@ -178,34 +206,18 @@
             }
 
             items.push({ id: Date.now(), name: title, price: Number(price), img: img });
-            localStorage.setItem('ng_items', JSON.stringify(items));
-            alert("Saved!");
+            localStorage.setItem('ng_saved_items', JSON.stringify(items));
+            alert("Naya item successfully add ho gaya!");
             document.getElementById('pTitle').value = '';
             document.getElementById('pPrice').value = '';
             document.getElementById('pImg').value = '';
-            loadProducts();
             goTab('home', document.getElementById('btn-home'));
+            loadProducts();
         }
 
-        function placeOrder() {
-            if(myCart.length === 0) { alert("Cart khali hai!"); return; }
-            var name = document.getElementById('cName').value;
-            var phone = document.getElementById('cPhone').value;
-            var address = document.getElementById('cAddress').value;
-            if(!name || !phone || !address) { alert("Pura form bharein!"); return; }
-
-            var txt = "*Naya Order - Nirmal Garments*\nName: " + name + "\nPhone: " + phone + "\nAddress: " + address + "\n\nItems:\n";
-            var total = 0;
-            for(var i = 0; i < myCart.length; i++) {
-                txt += "- " + myCart[i].name + " (₹" + myCart[i].price + ")\n";
-                total += myCart[i].price;
-            }
-            txt += "\nTotal: ₹" + total;
-
-            window.open("https://wa.me/917224802868?text=" + encodeURIComponent(txt), '_blank');
-        }
-
+        window.addEventListener('hashchange', checkHashRoute);
         loadProducts();
+        checkHashRoute();
     </script>
 </body>
 </html>
