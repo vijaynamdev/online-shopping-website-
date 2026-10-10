@@ -6,7 +6,7 @@
     <title>Nirmal Garments</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background: #f4f6f9; padding-bottom: 70px; color: #333; }
+        body { background: #f4f6f9; padding-bottom: 75px; color: #333; }
         
         header { background: #1e293b; color: white; padding: 15px; text-align: center; font-size: 1.2rem; font-weight: bold; position: sticky; top: 0; z-index: 10; }
         
@@ -29,7 +29,7 @@
         .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-top: 5px; }
 
         .nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; display: flex; border-top: 1px solid #ccc; height: 60px; z-index: 100; }
-        .nav-btn { flex: 1; border: none; background: transparent; font-size: 0.8rem; font-weight: bold; color: #666; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .nav-btn { flex: 1; border: none; background: transparent; font-size: 0.75rem; font-weight: bold; color: #666; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; white-space: nowrap; }
         .nav-btn.active { color: #2563eb; }
     </style>
 </head>
@@ -99,7 +99,7 @@
     <!-- NAVIGATION BAR -->
     <div class="nav">
         <button class="nav-btn active" id="btn-home" onclick="goTab('home', this)">🏠 Home</button>
-        <button class="nav-btn" id="btn-cart" onclick="goTab('cart', this)">🛒 Cart (<span id="count">0</span>)</button>
+        <button class="nav-btn" id="btn-cart" onclick="goTab('cart', this)">🛒 Cart(<span id="count">0</span>)</button>
         <button class="nav-btn" id="btn-contact" onclick="goTab('contact', this)">📞 Contact</button>
         <button class="nav-btn" id="btn-account" onclick="goTab('account', this)">⚙️ Admin</button>
     </div>
@@ -107,7 +107,7 @@
     <script>
         var items = JSON.parse(localStorage.getItem('ng_items')) || [
             { id: 1, name: "Casual Shirt", price: 599, img: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400" },
-            { id: 2, name: "Denim Jeans", price: 999, img: "https://images.unsplash.com/photo-1542272604-780c36856d66?w=400" }
+            { id: 2, name: "Denim Jeans", price: 999, img: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400" }
         ];
 
         var myCart = [];
