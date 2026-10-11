@@ -7,6 +7,9 @@
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { padding-bottom: 70px; }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
@@ -35,7 +38,7 @@
     </header>
 
     <!-- Main Dynamic Content Container -->
-    <main class="flex-grow max-w-7xl mx-auto px-4 py-6 w-full mb-16">
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-6 w-full">
 
         <!-- HOME PAGE -->
         <section id="page-home">
@@ -57,7 +60,7 @@
                 <div id="cart-items-list" class="lg:col-span-2 space-y-4">
                     <!-- Cart items will be loaded here -->
                 </div>
-                <div id="cart-summary" class="bg-white p-6 rounded-xl shadow-md h-fit">
+                <div id="cart-summary" class="bg-white p-6 rounded-xl shadow-md h-fit mb-12">
                     <!-- Summary & Checkout form -->
                 </div>
             </div>
@@ -109,9 +112,14 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t mt-12 py-6 text-center text-gray-500 text-sm">
-        &copy; 2026 Nirmal Garments. All rights reserved.
+    <!-- Footer / Bottom Navigation Bar -->
+    <footer class="bg-white border-t py-4 text-center text-gray-500 text-sm mt-auto">
+        <div class="flex justify-around items-center max-w-md mx-auto px-4 font-medium text-gray-700">
+            <button onclick="showPage('home')" class="flex flex-col items-center hover:text-blue-600 cursor-pointer"><i class="fa-solid fa-house mb-1"></i> Home</button>
+            <button onclick="showPage('cart')" class="flex flex-col items-center hover:text-blue-600 cursor-pointer relative"><i class="fa-solid fa-cart-shopping mb-1"></i> Cart</button>
+            <button onclick="showPage('contact')" class="flex flex-col items-center hover:text-blue-600 cursor-pointer"><i class="fa-solid fa-address-book mb-1"></i> Contact</button>
+        </div>
+        <p class="mt-3">&copy; 2026 Nirmal Garments. All rights reserved.</p>
     </footer>
 
     <!-- JavaScript Logic -->
@@ -237,36 +245,32 @@
                 <div class="flex justify-between mb-2"><span>Subtotal</span><span>₹${subtotal}</span></div>
                 <hr class="my-3">
                 <div class="space-y-3 mb-4">
-                    <input type="text" id="cust-name" placeholder="Your Name" class="w-full border px-3 py-2 rounded text-sm outline-none focus:ring-2 focus:ring-blue-500">
-                    <input type="tel" id="cust-phone" placeholder="Phone Number" class="w-full border px-3 py-2 rounded text-sm outline-none focus:ring-2 focus:ring-blue-500">
-                    <textarea id="cust-address" placeholder="Delivery Address" class="w-full border px-3 py-2 rounded text-sm outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    <input type="text" id="cust-name" placeholder="Your Name" class="w-full border px-3 py-2 rounded text-sm outline-none focus:ring-2 focus:ring-blue-500" oninput="updateWhatsAppLink()">
+                    <input type="tel" id="cust-phone" placeholder="Phone Number" class="w-full border px-3 py-2 rounded text-sm outline-none focus:ring-2 focus:ring-blue-500" oninput="updateWhatsAppLink()">
+                    <textarea id="cust-address" placeholder="Delivery Address" class="w-full border px-3 py-2 rounded text-sm outline-none focus:ring-2 focus:ring-blue-500" oninput="updateWhatsAppLink()"></textarea>
                 </div>
-                <button type="button" onclick="checkoutWhatsApp()" class="w-full bg-green-600 text-white py-3 rounded-lg font-bold hover:bg-green-700 flex items-center justify-center gap-2 cursor-pointer shadow-md">
-                    <i class="fa-brands fa-whatsapp text-xl"></i> Order via WhatsApp
-                </button>
+                <a id="whatsapp-btn" href="#" onclick="return validateCheckout(event);" target="_blank" class="w-full bg-green-600 text-white py-3 rounded-lg font-bold hover:bg-green-700 flex items-center justify-center gap-2 cursor-pointer shadow-md block text-center">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp Par Order Karein
+                </a>
             `;
+            updateWhatsAppLink();
         }
 
-        // WhatsApp Checkout (Fixed & Reliable)
-        function checkoutWhatsApp() {
+        // Real-time link generator for WhatsApp anchor tag
+        function updateWhatsAppLink() {
             const nameInput = document.getElementById('cust-name');
             const phoneInput = document.getElementById('cust-phone');
             const addressInput = document.getElementById('cust-address');
+            const whatsappBtn = document.getElementById('whatsapp-btn');
 
-            const name = nameInput ? nameInput.value.trim() : '';
-            const phone = phoneInput ? phoneInput.value.trim() : '';
-            const address = addressInput ? addressInput.value.trim() : '';
+            if (!nameInput || !phoneInput || !addressInput || !whatsappBtn) return;
 
-            if (!name || !phone || !address) {
-                alert('कृपया ऑर्डर देने से पहले अपना नाम, फोन नंबर और पता भरें। (Please fill in all customer details)');
-                if (nameInput && !name) nameInput.focus();
-                else if (phoneInput && !phone) phoneInput.focus();
-                else if (addressInput && !address) addressInput.focus();
-                return;
-            }
+            const name = nameInput.value.trim();
+            const phone = phoneInput.value.trim();
+            const address = addressInput.value.trim();
 
             let message = `*New Order - Nirmal Garments*%0A%0A`;
-            message += `*Name:* ${name}%0A*Phone:* ${phone}%0A*Address:* ${address}%0A%0A*Items:*%0A`;
+            message += `*Name:* ${name || 'N/A'}%0A*Phone:* ${phone || 'N/A'}%0A*Address:* ${address || 'N/A'}%0A%0A*Items:*%0A`;
             
             let total = 0;
             cart.forEach(item => {
@@ -275,8 +279,21 @@
             });
             message += `%0A*Total Amount:* ₹${total}`;
 
-            const whatsappUrl = `https://wa.me/919876543210?text=${message}`;
-            window.open(whatsappUrl, '_blank');
+            whatsappBtn.href = `https://wa.me/919876543210?text=${message}`;
+        }
+
+        // Validation before redirection
+        function validateCheckout(event) {
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+
+            if (!name || !phone || !address) {
+                alert('कृपया ऑर्डर देने से पहले अपना नाम, फोन नंबर और पता भरें।');
+                event.preventDefault(); // लिंक खुलने से रोकेगा अगर डिटेल्स खाली हैं
+                return false;
+            }
+            return true; // सीधे WhatsApp खोल देगा
         }
 
         // Admin Logic
@@ -326,7 +343,7 @@
             e.preventDefault();
             const name = document.getElementById('new-name').value;
             const price = Number(document.getElementById('new-price').value);
-            const image = document.getElementById('new-image').value;
+            const image = document.getElementById('new-image.value') || document.getElementById('new-image').value;
 
             const newProduct = { id: Date.now(), name, price, image };
             products.push(newProduct);
@@ -344,7 +361,6 @@
         }
 
         function renderAdminProducts() {
-            const list = document.getElementById('admin-dashboard');
             const productListEl = document.getElementById('admin-product-list');
             if (!productListEl) return;
             productListEl.innerHTML = products.map(p => `
