@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nirmal Garments - Royal Ethnic & Formal Wear</title>
+  <title>Nirmal Garments</title>
   <style>
     :root {
       --primary: #0f172a;
-      --accent: #d97706; /* Royal Gold/Amber */
-      --accent-hover: #b45309;
+      --accent: #d97706;
       --bg: #f8fafc;
       --card-bg: #ffffff;
       --text: #1e293b;
@@ -23,90 +22,71 @@
       padding-bottom: 60px;
     }
 
-    /* Welcome Splash Popup Overlay */
+    /* Welcome Splash Popup */
     #welcomeOverlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
+      background: #0f172a;
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      animation: fadeOutOverlay 0.8s ease 2.2s forwards;
+      animation: fadeOutOverlay 0.5s ease 1.5s forwards;
     }
 
     .welcome-card {
       text-align: center;
       color: white;
-      padding: 3rem;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .welcome-card h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       color: #fbbf24;
       margin-bottom: 0.5rem;
-      letter-spacing: 1px;
-    }
-
-    .welcome-card p {
-      font-size: 1.1rem;
-      color: #94a3b8;
-    }
-
-    @keyframes scaleIn {
-      0% { transform: scale(0.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
     }
 
     @keyframes fadeOutOverlay {
-      0% { opacity: 1; visibility: visible; }
-      100% { opacity: 0; visibility: hidden; }
+      to { opacity: 0; visibility: hidden; }
     }
 
     /* Header & Navigation */
     header {
-      background: linear-gradient(90deg, #0f172a, #1e293b);
+      background: var(--primary);
       color: white;
-      padding: 1.2rem 2rem;
+      padding: 1rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      border-bottom: 2px solid var(--accent);
+      border-bottom: 3px solid var(--accent);
     }
 
     .logo {
-      font-size: 1.8rem;
-      font-weight: 800;
-      letter-spacing: 1px;
+      font-size: 1.5rem;
+      font-weight: bold;
       color: #fbbf24;
     }
 
     nav {
       display: flex;
-      gap: 2rem;
+      gap: 1.2rem;
       align-items: center;
     }
 
     nav a {
-      color: #f1f5f9;
+      color: #ffffff;
       text-decoration: none;
       font-weight: 600;
       cursor: pointer;
-      transition: color 0.2s;
-      font-size: 1.05rem;
+      font-size: 1rem;
     }
 
     nav a:hover {
@@ -116,101 +96,69 @@
     .cart-badge {
       background-color: var(--accent);
       color: white;
-      padding: 3px 9px;
-      border-radius: 12px;
+      padding: 2px 7px;
+      border-radius: 10px;
       font-size: 0.8rem;
-      margin-left: 4px;
       font-weight: bold;
     }
 
     /* Container */
     .container {
       max-width: 1200px;
-      margin: 2.5rem auto;
+      margin: 1.5rem auto;
       padding: 0 1rem;
-    }
-
-    /* Hero Banner */
-    .hero-banner {
-      background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)), url('https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=1200') center/cover;
-      color: white;
-      text-align: center;
-      padding: 4rem 2rem;
-      border-radius: 16px;
-      margin-bottom: 2.5rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-
-    .hero-banner h2 {
-      font-size: 2.5rem;
-      color: #fbbf24;
-      margin-bottom: 0.8rem;
-    }
-
-    .hero-banner p {
-      font-size: 1.1rem;
-      color: #cbd5e1;
     }
 
     /* Category Filter Section */
     .category-section {
       display: flex;
       justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
+      gap: 0.6rem;
+      margin-bottom: 1.8rem;
       flex-wrap: wrap;
     }
 
     .category-btn {
-      padding: 0.7rem 1.5rem;
-      border: 2px solid var(--accent);
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--accent);
       background-color: white;
       color: var(--primary);
-      border-radius: 30px;
+      border-radius: 20px;
       cursor: pointer;
-      font-weight: 700;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      font-weight: 600;
     }
 
     .category-btn.active, .category-btn:hover {
       background-color: var(--accent);
       color: white;
-      transform: translateY(-2px);
     }
 
     /* Product Grid */
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
     }
 
     .product-card {
       background: var(--card-bg);
-      border-radius: 14px;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       display: flex;
       flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 1px solid #e2e8f0;
-    }
-
-    .product-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.12);
     }
 
     .product-img {
       width: 100%;
-      height: 260px;
+      height: 250px;
       object-fit: cover;
-      background-color: #f1f5f9;
+      background-color: #e2e8f0;
     }
 
     .product-info {
-      padding: 1.5rem;
+      padding: 1rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -220,53 +168,50 @@
       font-size: 0.75rem;
       text-transform: uppercase;
       color: var(--accent);
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.3rem;
+      font-weight: bold;
     }
 
     .product-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 0.3rem 0;
       color: var(--primary);
     }
 
     .product-price {
-      font-weight: 800;
+      font-weight: bold;
       color: #047857;
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
     }
 
     /* Size Selector */
     .size-selector {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .size-selector label {
-      font-size: 0.85rem;
-      font-weight: 700;
+      font-size: 0.8rem;
+      font-weight: bold;
       display: block;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
       color: #64748b;
     }
 
     .size-options {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.4rem;
       flex-wrap: wrap;
     }
 
     .size-btn {
-      padding: 0.4rem 0.8rem;
+      padding: 0.3rem 0.6rem;
       border: 1px solid #cbd5e1;
       background: #f8fafc;
-      border-radius: 6px;
+      border-radius: 4px;
       cursor: pointer;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      transition: all 0.2s;
     }
 
     .size-btn.selected {
@@ -277,104 +222,79 @@
 
     .add-to-cart-btn {
       margin-top: auto;
-      padding: 0.9rem;
+      padding: 0.8rem;
       background-color: var(--accent);
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
       cursor: pointer;
-      font-weight: 700;
-      font-size: 1rem;
-      transition: background 0.2s;
-    }
-
-    .add-to-cart-btn:hover {
-      background-color: var(--accent-hover);
+      font-weight: bold;
+      font-size: 0.95rem;
     }
 
     /* View Sections */
     .view { display: none; }
     .view.active { display: block; }
 
-    /* Cart & Checkout */
+    /* Cart */
     .cart-table {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 1.5rem;
       background: white;
-      border-radius: 10px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
     .cart-table th, .cart-table td {
-      padding: 1.2rem;
+      padding: 1rem;
       text-align: left;
       border-bottom: 1px solid #e2e8f0;
     }
 
-    .cart-table th {
-      background-color: #f1f5f9;
-      font-weight: 700;
-    }
-
     .checkout-form {
       background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      max-width: 550px;
+      padding: 1.5rem;
+      border-radius: 8px;
+      max-width: 500px;
       margin: 0 auto;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
       border: 1px solid #e2e8f0;
     }
 
     .form-group {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .form-group label {
       display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
+      margin-bottom: 0.3rem;
+      font-weight: bold;
     }
 
     .form-group input, .form-group textarea {
       width: 100%;
-      padding: 0.8rem;
+      padding: 0.6rem;
       border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      font-size: 1rem;
+      border-radius: 6px;
     }
 
     .whatsapp-btn {
       background-color: var(--whatsapp);
       color: white;
-      padding: 1rem;
+      padding: 0.8rem;
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
       font-weight: bold;
-      font-size: 1.1rem;
+      font-size: 1rem;
       width: 100%;
       cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-      transition: background 0.2s;
     }
 
-    .whatsapp-btn:hover {
-      background-color: #22bf5b;
-    }
-
-    /* Admin Panel */
     .admin-card {
       background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
       border: 1px solid #e2e8f0;
     }
 
@@ -383,16 +303,16 @@
 </head>
 <body>
 
-  <!-- Welcome Pop-Up Effect Overlay -->
+  <!-- Welcome Pop-Up -->
   <div id="welcomeOverlay">
     <div class="welcome-card">
       <h1>Welcome to Nirmal Garments</h1>
-      <p>Exclusive Ethnic & Wedding Collection</p>
+      <p>Ethnic & Formal Wedding Collection</p>
     </div>
   </div>
 
   <header>
-    <div class="logo">✨ Nirmal Garments</div>
+    <div class="logo">Nirmal Garments</div>
     <nav>
       <a onclick="showView('home')">Home</a>
       <a onclick="showView('cart')">Cart <span id="cartCount" class="cart-badge">0</span></a>
@@ -404,18 +324,13 @@
     
     <!-- HOME VIEW -->
     <div id="homeView" class="view active">
-      <div class="hero-banner">
-        <h2>Royal Wedding & Ethnic Collection</h2>
-        <p>Explore our premium range of Jodpuris, Sherwanis, Blazers, and Formal Wear.</p>
-      </div>
-
       <div class="category-section" id="categoryContainer"></div>
       <div class="products-grid" id="productsGrid"></div>
     </div>
 
     <!-- CART VIEW -->
     <div id="cartView" class="view">
-      <h2 style="margin-bottom: 1.5rem;">Your Shopping Cart</h2>
+      <h2>Shopping Cart</h2><br>
       <div id="cartContent">
         <table class="cart-table">
           <thead>
@@ -430,84 +345,80 @@
           <tbody id="cartItems"></tbody>
         </table>
 
-        <div style="text-align: right; margin-bottom: 2rem; font-size: 1.4rem; font-weight: 800;">
-          Total Amount: ₹<span id="cartTotal">0</span>
+        <div style="text-align: right; margin-bottom: 1.5rem; font-size: 1.3rem; font-weight: bold;">
+          Total: ₹<span id="cartTotal">0</span>
         </div>
 
         <div class="checkout-form">
-          <h3 style="margin-bottom: 1rem; color: var(--primary);">Customer & Delivery Details</h3>
+          <h3>Customer Details</h3><br>
           <div class="form-group">
             <label>Full Name</label>
-            <input type="text" id="custName" placeholder="Enter your full name">
+            <input type="text" id="custName" placeholder="Enter your name">
           </div>
           <div class="form-group">
             <label>Phone Number</label>
-            <input type="tel" id="custPhone" placeholder="Enter your phone number">
+            <input type="tel" id="custPhone" placeholder="Enter phone number">
           </div>
           <div class="form-group">
-            <label>Complete Delivery Address</label>
-            <textarea id="custAddress" rows="3" placeholder="Enter your full delivery address"></textarea>
+            <label>Address</label>
+            <textarea id="custAddress" rows="3" placeholder="Enter full address"></textarea>
           </div>
-          <button class="whatsapp-btn" onclick="sendWhatsAppOrder()">
-            📱 Complete Order via WhatsApp
-          </button>
+          <button class="whatsapp-btn" onclick="sendWhatsAppOrder()">Order via WhatsApp</button>
         </div>
       </div>
     </div>
 
     <!-- CONTACT VIEW -->
     <div id="contactView" class="view">
-      <div class="admin-card" style="max-width: 600px; margin: 0 auto; text-align: center;">
-        <h2 style="color: var(--primary); margin-bottom: 1rem;">Contact Us</h2>
-        <p style="font-size: 1.1rem; line-height: 1.6; color: #475569; margin-bottom: 1.5rem;">
-          Welcome to <strong>Nirmal Garments</strong>! We specialize in premium Wedding Wear, Sherwanis, Open Jodpuris, Blazers, and Formal Suits.<br>
-          For custom orders and bulk inquiries, reach out to us directly on WhatsApp.
-        </p>
-        <a href="https://wa.me/917224802868" target="_blank" style="display: inline-block; background: var(--whatsapp); color: white; padding: 0.8rem 1.8rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem;">Chat on WhatsApp</a>
+      <div class="admin-card" style="max-width: 500px; margin: 0 auto; text-align: center;">
+        <h2>Contact Us</h2><br>
+        <p><strong>Nirmal Garments</strong></p>
+        <p>Specialist in Ethnic Wear, Jodpuri, Sherwani, Blazers & Formal Clothing.</p><br>
+        <a href="https://wa.me/917224802868" target="_blank" style="display: inline-block; background: var(--whatsapp); color: white; padding: 0.7rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: bold;">Chat on WhatsApp (7224802868)</a>
       </div>
     </div>
 
     <!-- ADMIN VIEW (#admin) -->
     <div id="adminView" class="view">
-      <div id="adminAuth" class="admin-card" style="max-width: 400px; margin: 2rem auto;">
-        <h3>Admin Access Portal</h3><br>
+      <div id="adminAuth" class="admin-card" style="max-width: 350px; margin: 2rem auto;">
+        <h3>Admin Login</h3><br>
         <div class="form-group">
-          <label>Enter Admin PIN</label>
-          <input type="password" id="adminPinInput" placeholder="Enter PIN (7224)">
+          <label>PIN Code</label>
+          <input type="password" id="adminPinInput" placeholder="Enter PIN">
         </div>
-        <button class="add-to-cart-btn" onclick="authenticateAdmin()">Login</button>
+        <button class="add-to-cart-btn" style="width: 100%;" onclick="authenticateAdmin()">Login</button>
       </div>
 
       <div id="adminPanel" class="hidden">
         <h2>Admin Management Panel</h2><br>
         <div class="admin-card">
-          <h3>Add New Product</h3><br>
+          <h3>Add Product</h3><br>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
             <div class="form-group">
-              <label>Product Name</label>
-              <input type="text" id="pName" placeholder="e.g. Royal Sherwani">
+              <label>Name</label>
+              <input type="text" id="pName" placeholder="Product name">
             </div>
             <div class="form-group">
               <label>Category</label>
-              <input type="text" id="pCategory" placeholder="e.g. Sherwani, Jodpuri, Blazers">
+              <input type="text" id="pCategory" placeholder="Jodpuri, Sherwani, etc.">
             </div>
             <div class="form-group">
               <label>Price (₹)</label>
-              <input type="number" id="pPrice" placeholder="2999">
+              <input type="number" id="pPrice" placeholder="Price">
             </div>
             <div class="form-group">
-              <label>Image URL</label>
-              <input type="text" id="pImg" placeholder="Image link">
+              <label>Image Link</label>
+              <input type="text" id="pImg" placeholder="Image URL">
             </div>
             <div class="form-group" style="grid-column: span 2;">
-              <label>Available Sizes (Comma separated)</label>
-              <input type="text" id="pSizes" placeholder="38, 40, 42, 44 or S, M, L, XL">
+              <label>Sizes (Comma separated)</label>
+              <input type="text" id="pSizes" placeholder="38, 40, 42, 44 or S, M, L">
             </div>
           </div>
-          <button class="add-to-cart-btn" onclick="addNewProduct()">Add Product to Store</button>
+          <button class="add-to-cart-btn" style="width: 100%;" onclick="addNewProduct()">Add Product</button>
         </div>
 
-        <h3>Current Inventory</h3><br>
+        <h3>Inventory</h3><br>
         <div id="adminProductList"></div>
       </div>
     </div>
@@ -515,77 +426,31 @@
   </div>
 
   <script>
-    // Default Ethnic, Wedding & Formal Wear Products
     const defaultProducts = [
-      { 
-        id: 1, 
-        name: "Royal Velvet Sherwani", 
-        category: "Sherwani", 
-        price: 4999, 
-        sizes: ["38", "40", "42", "44"], 
-        image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500" 
-      },
-      { 
-        id: 2, 
-        name: "Designer Open Jodpuri", 
-        category: "Jodpuri", 
-        price: 3499, 
-        sizes: ["38", "40", "42", "44"], 
-        image: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=500" 
-      },
-      { 
-        id: 3, 
-        name: "Classic Wedding Blazer", 
-        category: "Blazer", 
-        price: 2999, 
-        sizes: ["38", "40", "42", "44"], 
-        image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500" 
-      },
-      { 
-        id: 4, 
-        name: "Formal Pant & Shirt Combo", 
-        category: "Formal Wear", 
-        price: 1499, 
-        sizes: ["S", "M", "L", "XL", "XXL"], 
-        image: "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=500" 
-      },
-      { 
-        id: 5, 
-        name: "Indo-Western Wedding Suit", 
-        category: "Sherwani", 
-        price: 5499, 
-        sizes: ["38", "40", "42", "44"], 
-        image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500" 
-      },
-      { 
-        id: 6, 
-        name: "Premium Casual Shirt", 
-        category: "Shirts", 
-        price: 699, 
-        sizes: ["S", "M", "L", "XL"], 
-        image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500" 
-      }
+      { id: 1, name: "Open Jodpuri Suit", category: "Jodpuri", price: 3499, sizes: ["38", "40", "42", "44"], image: "https://placehold.co/500x500/0f172a/fbbf24?text=Open+Jodpuri" },
+      { id: 2, name: "Royal Wedding Sherwani", category: "Sherwani", price: 4999, sizes: ["38", "40", "42", "44"], image: "https://placehold.co/500x500/0f172a/fbbf24?text=Royal+Sherwani" },
+      { id: 3, name: "Designer Blazer", category: "Blazer", price: 2999, sizes: ["38", "40", "42", "44"], image: "https://placehold.co/500x500/0f172a/fbbf24?text=Designer+Blazer" },
+      { id: 4, name: "Formal Pant & Shirt", category: "Formal Wear", price: 1499, sizes: ["S", "M", "L", "XL", "XXL"], image: "https://placehold.co/500x500/0f172a/fbbf24?text=Formal+Pant+Shirt" },
+      { id: 5, name: "Casual Shirt", category: "Shirts", price: 699, sizes: ["S", "M", "L", "XL"], image: "https://placehold.co/500x500/0f172a/fbbf24?text=Casual+Shirt" }
     ];
 
     let products = defaultProducts;
-    try {
-      const saved = localStorage.getItem('ng_saved_items');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          products = parsed;
-        }
-      }
-    } catch(e) {
-      products = defaultProducts;
-    }
-
     let cart = [];
     let selectedCategory = "All";
     let selectedSizes = {};
 
     window.addEventListener('DOMContentLoaded', () => {
-      saveProducts();
+      // Clear old cached corrupted data once to guarantee fresh display
+      if (!localStorage.getItem('ng_v2_initialized')) {
+        localStorage.setItem('ng_saved_items', JSON.stringify(defaultProducts));
+        localStorage.setItem('ng_v2_initialized', 'true');
+      } else {
+        try {
+          const saved = localStorage.getItem('ng_saved_items');
+          if (saved) products = JSON.parse(saved);
+        } catch(e) { products = defaultProducts; }
+      }
+
       renderCategories();
       renderProducts();
       checkAdminHash();
@@ -609,7 +474,6 @@
       if (viewName === 'cart') { document.getElementById('cartView').classList.add('active'); renderCart(); }
       if (viewName === 'contact') document.getElementById('contactView').classList.add('active');
       if (viewName === 'admin') document.getElementById('adminView').classList.add('active');
-      window.scrollTo(0, 0);
     }
 
     function renderCategories() {
@@ -633,12 +497,12 @@
       const filtered = selectedCategory === "All" ? products : products.filter(p => p.category === selectedCategory);
 
       if (filtered.length === 0) {
-        grid.innerHTML = `<p style="grid-column: 1/-1; text-align:center; padding: 2rem;">No products found in this category.</p>`;
+        grid.innerHTML = `<p>No products found.</p>`;
         return;
       }
 
       grid.innerHTML = filtered.map(p => {
-        const sizes = p.sizes || ["S", "M", "L", "XL"];
+        const sizes = p.sizes || ["38", "40", "42", "44"];
         if (!selectedSizes[p.id]) selectedSizes[p.id] = sizes[0];
         const currentSelectedSize = selectedSizes[p.id];
 
@@ -676,14 +540,14 @@
       const chosenSize = selectedSizes[productId] || (product.sizes ? product.sizes[0] : 'Standard');
       cart.push({ ...product, chosenSize });
       document.getElementById('cartCount').innerText = cart.length;
-      alert(`${product.name} (Size: ${chosenSize}) successfully added to cart!`);
+      alert(`${product.name} (Size: ${chosenSize}) added to cart!`);
     }
 
     function renderCart() {
       const tbody = document.getElementById('cartItems');
       const totalSpan = document.getElementById('cartTotal');
       if (cart.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 2rem;">Your cart is empty.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Your cart is empty.</td></tr>`;
         totalSpan.innerText = "0";
         return;
       }
@@ -692,6 +556,87 @@
         total += Number(item.price);
         return `
           <tr>
-            <td><strong>${item.name}</strong></td>
+            <td>${item.name}</td>
             <td>${item.category || '-'}</td>
-            <td><span style="background:#e2e8f0; pa
+            <td><strong>${item.chosenSize}</strong></td>
+            <td>₹${item.price}</td>
+            <td><button style="color:red; cursor:pointer; background:none; border:none;" onclick="removeFromCart(${index})">Remove</button></td>
+          </tr>
+        `;
+      }).join('');
+      totalSpan.innerText = total;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      document.getElementById('cartCount').innerText = cart.length;
+      renderCart();
+    }
+
+    function sendWhatsAppOrder() {
+      if (cart.length === 0) { alert("Cart is empty!"); return; }
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const address = document.getElementById('custAddress').value.trim();
+      if (!name || !phone || !address) { alert("Please fill all customer details."); return; }
+
+      let text = `*New Order - Nirmal Garments*\n\n*Customer:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n\n*Items:*\n`;
+      let total = 0;
+      cart.forEach((item, i) => {
+        text += `${i + 1}. ${item.name} (Size: ${item.chosenSize}) - ₹${item.price}\n`;
+        total += Number(item.price);
+      });
+      text += `\n*Total:* ₹${total}`;
+      
+      window.open(`https://wa.me/917224802868?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    function authenticateAdmin() {
+      if (document.getElementById('adminPinInput').value === '7224') {
+        document.getElementById('adminAuth').classList.add('hidden');
+        document.getElementById('adminPanel').classList.remove('hidden');
+        renderAdminInventory();
+      } else { alert("Incorrect PIN!"); }
+    }
+
+    function addNewProduct() {
+      const name = document.getElementById('pName').value.trim();
+      const category = document.getElementById('pCategory').value.trim() || 'General';
+      const price = document.getElementById('pPrice').value.trim();
+      const image = document.getElementById('pImg').value.trim() || 'https://placehold.co/500x500/0f172a/fbbf24?text=New+Item';
+      const sizesInput = document.getElementById('pSizes').value.trim();
+      if (!name || !price) { alert("Enter Name and Price."); return; }
+      const sizes = sizesInput ? sizesInput.split(',').map(s => s.trim()) : ["38", "40", "42", "44"];
+
+      products.push({ id: Date.now(), name, category, price: Number(price), sizes, image });
+      saveProducts();
+      renderCategories();
+      renderProducts();
+      renderAdminInventory();
+      document.getElementById('pName').value = '';
+      document.getElementById('pCategory').value = '';
+      document.getElementById('pPrice').value = '';
+      document.getElementById('pImg').value = '';
+      document.getElementById('pSizes').value = '';
+      alert("Product added!");
+    }
+
+    function deleteProduct(id) {
+      products = products.filter(p => p.id !== id);
+      saveProducts();
+      renderCategories();
+      renderProducts();
+      renderAdminInventory();
+    }
+
+    function renderAdminInventory() {
+      document.getElementById('adminProductList').innerHTML = products.map(p => `
+        <div style="display:flex; justify-content:space-between; align-items:center; background:white; padding:0.8rem; border-radius:6px; margin-bottom:0.5rem; border:1px solid #e2e8f0;">
+          <div><strong>${p.name}</strong> (${p.category}) - ₹${p.price}</div>
+          <button onclick="deleteProduct(${p.id})" style="color:red; cursor:pointer; background:none; border:none;">Delete</button>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>
