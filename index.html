@@ -13,274 +13,42 @@
       --text: #0f172a;
       --whatsapp: #25d366;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      padding-bottom: 60px;
-    }
-
-    /* Header & Navigation */
-    header {
-      background-color: var(--primary);
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    nav {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    .cart-badge {
-      background-color: var(--accent);
-      color: white;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-size: 0.8rem;
-      margin-left: 4px;
-    }
-
-    /* Container */
-    .container {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    /* Category Filter Section */
-    .category-section {
-      display: flex;
-      justify-content: center;
-      gap: 0.8rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .category-btn {
-      padding: 0.6rem 1.2rem;
-      border: 1px solid var(--primary);
-      background-color: white;
-      color: var(--primary);
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .category-btn.active, .category-btn:hover {
-      background-color: var(--primary);
-      color: white;
-    }
-
-    /* Product Grid */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 2rem;
-    }
-
-    .product-card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s;
-    }
-
-    .product-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .product-img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      background-color: #e2e8f0;
-    }
-
-    .product-info {
-      padding: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .product-category {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      color: #64748b;
-      font-weight: bold;
-      margin-bottom: 0.2rem;
-    }
-
-    .product-title {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .product-price {
-      font-weight: bold;
-      color: var(--accent);
-      font-size: 1.2rem;
-      margin-bottom: 0.8rem;
-    }
-
-    /* Size Selector */
-    .size-selector {
-      margin-bottom: 1rem;
-    }
-
-    .size-selector label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-
-    .size-options {
-      display: flex;
-      gap: 0.4rem;
-    }
-
-    .size-btn {
-      padding: 0.3rem 0.6rem;
-      border: 1px solid #cbd5e1;
-      background: white;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.85rem;
-    }
-
-    .size-btn.selected {
-      background-color: var(--accent);
-      color: white;
-      border-color: var(--accent);
-    }
-
-    .add-to-cart-btn {
-      margin-top: auto;
-      padding: 0.8rem;
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      width: 100%;
-    }
-
-    .add-to-cart-btn:hover {
-      background-color: #334155;
-    }
-
-    /* View Sections */
-    .view {
-      display: none;
-    }
-
-    .view.active {
-      display: block;
-    }
-
-    /* Cart & Checkout */
-    .cart-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 1.5rem;
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .cart-table th, .cart-table td {
-      padding: 1rem;
-      text-align: left;
-      border-bottom: 1px solid #e2e8f0;
-    }
-
-    .cart-table th {
-      background-color: #f1f5f9;
-    }
-
-    .checkout-form {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 0.4rem;
-      font-weight: 600;
-    }
-
-    .form-group input, .form-group textarea, .form-group select {
-      width: 100%;
-      padding: 0.6rem;
-      border: 1px solid #cbd5e1;
-      border-radius: 6px;
-    }
-
-    .whatsapp-btn {
-      background-color: var(--whatsapp);
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 1rem;
-      width: 100%;
-      cursor: pointer;
-    }
-
-    /* Admin Panel */
-    .admin-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      margin-bottom: 2rem;
-    }
-
-    .hidden {
-      display: none !important;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding-bottom: 60px; }
+    header { background-color: var(--primary); color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 1px; }
+    nav { display: flex; gap: 1.5rem; align-items: center; }
+    nav a { color: white; text-decoration: none; font-weight: 500; cursor: pointer; }
+    .cart-badge { background-color: var(--accent); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; margin-left: 4px; }
+    .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+    .category-section { display: flex; justify-content: center; gap: 0.8rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .category-btn { padding: 0.6rem 1.2rem; border: 1px solid var(--primary); background-color: white; color: var(--primary); border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; }
+    .category-btn.active, .category-btn:hover { background-color: var(--primary); color: white; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2rem; }
+    .product-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
+    .product-img { width: 100%; height: 220px; object-fit: cover; background-color: #e2e8f0; }
+    .product-info { padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .product-category { font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: bold; margin-bottom: 0.2rem; }
+    .product-title { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .product-price { font-weight: bold; color: var(--accent); font-size: 1.2rem; margin-bottom: 0.8rem; }
+    .size-selector { margin-bottom: 1rem; }
+    .size-selector label { font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 0.3rem; }
+    .size-options { display: flex; gap: 0.4rem; }
+    .size-btn { padding: 0.3rem 0.6rem; border: 1px solid #cbd5e1; background: white; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
+    .size-btn.selected { background-color: var(--accent); color: white; border-color: var(--accent); }
+    .add-to-cart-btn { margin-top: auto; padding: 0.8rem; background-color: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; width: 100%; }
+    .view { display: none; }
+    .view.active { display: block; }
+    .cart-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; background: white; border-radius: 8px; overflow: hidden; }
+    .cart-table th, .cart-table td { padding: 1rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
+    .cart-table th { background-color: #f1f5f9; }
+    .checkout-form { background: white; padding: 1.5rem; border-radius: 8px; max-width: 500px; margin: 0 auto; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; }
+    .form-group input, .form-group textarea { width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 6px; }
+    .whatsapp-btn { background-color: var(--whatsapp); color: white; padding: 0.8rem 1.5rem; border: none; border-radius: 6px; font-weight: bold; width: 100%; cursor: pointer; }
+    .admin-card { background: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
@@ -295,135 +63,87 @@
   </header>
 
   <div class="container">
-    
-    <!-- HOME VIEW -->
     <div id="homeView" class="view active">
-      <!-- Category Filter Tabs -->
-      <div class="category-section" id="categoryContainer">
-        <!-- Dynamic Category Buttons -->
-      </div>
-
-      <!-- Products Grid -->
-      <div class="products-grid" id="productsGrid">
-        <!-- Dynamic Product Cards -->
-      </div>
+      <div class="category-section" id="categoryContainer"></div>
+      <div class="products-grid" id="productsGrid"></div>
     </div>
 
-    <!-- CART VIEW -->
     <div id="cartView" class="view">
-      <h2>Your Shopping Cart</h2>
-      <br>
+      <h2>Your Shopping Cart</h2><br>
       <div id="cartContent">
         <table class="cart-table">
           <thead>
-            <tr>
-              <th>Product</th>
-              <th>Category</th>
-              <th>Size</th>
-              <th>Price</th>
-              <th>Action</th>
-            </tr>
+            <tr><th>Product</th><th>Category</th><th>Size</th><th>Price</th><th>Action</th></tr>
           </thead>
           <tbody id="cartItems"></tbody>
         </table>
-
         <div style="text-align: right; margin-bottom: 2rem; font-size: 1.3rem; font-weight: bold;">
           Total: ₹<span id="cartTotal">0</span>
         </div>
-
         <div class="checkout-form">
-          <h3>Customer Details for Order</h3>
-          <br>
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" id="custName" placeholder="Enter your full name" required>
-          </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" id="custPhone" placeholder="Enter phone number" required>
-          </div>
-          <div class="form-group">
-            <label>Delivery Address</label>
-            <textarea id="custAddress" rows="3" placeholder="Enter full address" required></textarea>
-          </div>
+          <h3>Customer Details for Order</h3><br>
+          <div class="form-group"><label>Name</label><input type="text" id="custName" placeholder="Full name"></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" id="custPhone" placeholder="Phone number"></div>
+          <div class="form-group"><label>Delivery Address</label><textarea id="custAddress" rows="3" placeholder="Address"></textarea></div>
           <button class="whatsapp-btn" onclick="sendWhatsAppOrder()">Order via WhatsApp</button>
         </div>
       </div>
     </div>
 
-    <!-- CONTACT VIEW -->
     <div id="contactView" class="view">
-      <h2>Contact Us</h2>
-      <br>
+      <h2>Contact Us</h2><br>
       <p>Welcome to <strong>Nirmal Garments</strong>!</p>
-      <p>For any queries, orders, or support, reach out to us directly on WhatsApp or visit our store.</p>
     </div>
 
-    <!-- ADMIN VIEW (#admin) -->
     <div id="adminView" class="view">
       <div id="adminAuth" class="admin-card" style="max-width: 400px; margin: 2rem auto;">
-        <h3>Admin Access</h3>
-        <br>
-        <div class="form-group">
-          <label>Enter Admin PIN</label>
-          <input type="password" id="adminPinInput" placeholder="Enter PIN">
-        </div>
+        <h3>Admin Access</h3><br>
+        <div class="form-group"><label>Enter Admin PIN</label><input type="password" id="adminPinInput" placeholder="PIN"></div>
         <button class="add-to-cart-btn" onclick="authenticateAdmin()">Login</button>
       </div>
-
       <div id="adminPanel" class="hidden">
-        <h2>Admin Management Panel</h2>
-        <br>
+        <h2>Admin Management Panel</h2><br>
         <div class="admin-card">
-          <h3>Add New Product</h3>
-          <br>
+          <h3>Add New Product</h3><br>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-            <div class="form-group">
-              <label>Product Name</label>
-              <input type="text" id="pName" placeholder="e.g. Designer Shirt">
-            </div>
-            <div class="form-group">
-              <label>Category</label>
-              <input type="text" id="pCategory" placeholder="e.g. Shirts, Jeans, T-Shirts">
-            </div>
-            <div class="form-group">
-              <label>Price (₹)</label>
-              <input type="number" id="pPrice" placeholder="599">
-            </div>
-            <div class="form-group">
-              <label>Image URL</label>
-              <input type="text" id="pImg" placeholder="https://via.placeholder.com/250">
-            </div>
-            <div class="form-group" style="grid-column: span 2;">
-              <label>Available Sizes (Comma separated)</label>
-              <input type="text" id="pSizes" placeholder="S, M, L, XL">
-            </div>
+            <div class="form-group"><label>Product Name</label><input type="text" id="pName" placeholder="Name"></div>
+            <div class="form-group"><label>Category</label><input type="text" id="pCategory" placeholder="Shirts, Jeans"></div>
+            <div class="form-group"><label>Price (₹)</label><input type="number" id="pPrice" placeholder="599"></div>
+            <div class="form-group"><label>Image URL</label><input type="text" id="pImg" placeholder="Image link"></div>
+            <div class="form-group" style="grid-column: span 2;"><label>Available Sizes</label><input type="text" id="pSizes" placeholder="S, M, L, XL"></div>
           </div>
           <button class="add-to-cart-btn" onclick="addNewProduct()">Add Product</button>
         </div>
-
-        <h3>Current Inventory</h3>
-        <br>
+        <h3>Current Inventory</h3><br>
         <div id="adminProductList"></div>
       </div>
     </div>
-
   </div>
 
   <script>
-    // Default Products Data
     const defaultProducts = [
       { id: 1, name: "Casual Shirt", category: "Shirts", price: 599, sizes: ["S", "M", "L", "XL"], image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400" },
       { id: 2, name: "Denim Jeans", category: "Jeans", price: 999, sizes: ["28", "30", "32", "34"], image: "https://images.unsplash.com/photo-1542272604-780c36856842?w=400" },
       { id: 3, name: "Cotton T-Shirt", category: "T-Shirts", price: 399, sizes: ["M", "L", "XL"], image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400" }
     ];
 
-    let products = JSON.parse(localStorage.getItem('ng_saved_items')) || defaultProducts;
+    let products = defaultProducts;
+    try {
+      const saved = localStorage.getItem('ng_saved_items');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          products = parsed;
+        }
+      }
+    } catch(e) {
+      products = defaultProducts;
+    }
+
     let cart = [];
     let selectedCategory = "All";
-    let selectedSizes = {}; // Maps productId -> selected size
+    let selectedSizes = {};
 
-    // Initialize Page
     window.addEventListener('DOMContentLoaded', () => {
       saveProducts();
       renderCategories();
@@ -446,15 +166,11 @@
     function showView(viewName) {
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       if (viewName === 'home') document.getElementById('homeView').classList.add('active');
-      if (viewName === 'cart') {
-        document.getElementById('cartView').classList.add('active');
-        renderCart();
-      }
+      if (viewName === 'cart') { document.getElementById('cartView').classList.add('active'); renderCart(); }
       if (viewName === 'contact') document.getElementById('contactView').classList.add('active');
       if (viewName === 'admin') document.getElementById('adminView').classList.add('active');
     }
 
-    // Categories Logic
     function renderCategories() {
       const categories = ["All", ...new Set(products.map(p => p.category || "General"))];
       const container = document.getElementById('categoryContainer');
@@ -471,22 +187,19 @@
       renderProducts();
     }
 
-    // Products Render Logic
     function renderProducts() {
       const grid = document.getElementById('productsGrid');
-      const filtered = selectedCategory === "All" 
-        ? products 
-        : products.filter(p => p.category === selectedCategory);
+      const filtered = selectedCategory === "All" ? products : products.filter(p => p.category === selectedCategory);
 
       if (filtered.length === 0) {
-        grid.innerHTML = `<p>No products found in this category.</p>`;
+        grid.innerHTML = `<p>No products found.</p>`;
         return;
       }
 
       grid.innerHTML = filtered.map(p => {
         const sizes = p.sizes || ["M", "L", "XL"];
-        const currentSelectedSize = selectedSizes[p.id] || sizes[0];
-        selectedSizes[p.id] = currentSelectedSize; // Default setting
+        if (!selectedSizes[p.id]) selectedSizes[p.id] = sizes[0];
+        const currentSelectedSize = selectedSizes[p.id];
 
         return `
           <div class="product-card">
@@ -495,19 +208,14 @@
               <span class="product-category">${p.category || 'General'}</span>
               <h3 class="product-title">${p.name}</h3>
               <div class="product-price">₹${p.price}</div>
-              
               <div class="size-selector">
                 <label>Select Size:</label>
                 <div class="size-options">
                   ${sizes.map(size => `
-                    <button class="size-btn ${size === currentSelectedSize ? 'selected' : ''}" 
-                            onclick="selectSize(${p.id}, '${size}')">
-                      ${size}
-                    </button>
+                    <button class="size-btn ${size === currentSelectedSize ? 'selected' : ''}" onclick="selectSize(${p.id}, '${size}')">${size}</button>
                   `).join('')}
                 </div>
               </div>
-
               <button class="add-to-cart-btn" onclick="addToCart(${p.id})">Add to Cart</button>
             </div>
           </div>
@@ -520,34 +228,22 @@
       renderProducts();
     }
 
-    // Cart System
     function addToCart(productId) {
       const product = products.find(p => p.id === productId);
       const chosenSize = selectedSizes[productId] || (product.sizes ? product.sizes[0] : 'Standard');
-
-      cart.push({
-        ...product,
-        chosenSize: chosenSize
-      });
-
-      updateCartCount();
-      alert(`${product.name} (Size:${chosenSize}) added to cart!`);
-    }
-
-    function updateCartCount() {
+      cart.push({ ...product, chosenSize });
       document.getElementById('cartCount').innerText = cart.length;
+      alert(`${product.name} (Size: ${chosenSize}) added to cart!`);
     }
 
     function renderCart() {
       const tbody = document.getElementById('cartItems');
       const totalSpan = document.getElementById('cartTotal');
-      
       if (cart.length === 0) {
         tbody.innerHTML = `<tr><td colspan="5">Your cart is empty.</td></tr>`;
         totalSpan.innerText = "0";
         return;
       }
-
       let total = 0;
       tbody.innerHTML = cart.map((item, index) => {
         total += Number(item.price);
@@ -561,99 +257,62 @@
           </tr>
         `;
       }).join('');
-
       totalSpan.innerText = total;
     }
 
     function removeFromCart(index) {
       cart.splice(index, 1);
-      updateCartCount();
+      document.getElementById('cartCount').innerText = cart.length;
       renderCart();
     }
 
-    // WhatsApp Order Directing
     function sendWhatsAppOrder() {
-      if (cart.length === 0) {
-        alert("Your cart is empty!");
-        return;
-      }
-
+      if (cart.length === 0) { alert("Cart is empty!"); return; }
       const name = document.getElementById('custName').value.trim();
       const phone = document.getElementById('custPhone').value.trim();
       const address = document.getElementById('custAddress').value.trim();
+      if (!name || !phone || !address) { alert("Please fill details."); return; }
 
-      if (!name || !phone || !address) {
-        alert("Please fill in all customer details.");
-        return;
-      }
-
-      let orderText = `*New Order - Nirmal Garments*\n\n`;
-      orderText += `*Customer:* ${name}\n`;
-      orderText += `*Phone:* ${phone}\n`;
-      orderText += `*Address:* ${address}\n\n`;
-      orderText += `*Items Ordered:*\n`;
-
+      let text = `*New Order - Nirmal Garments*\n\n*Customer:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n\n*Items:*\n`;
       let total = 0;
       cart.forEach((item, i) => {
-        orderText += `${i + 1}.${item.name} (Size: ${item.chosenSize}) - ₹${item.price}\n`;
+        text += `${i + 1}. ${item.name} (Size: ${item.chosenSize}) - ₹${item.price}\n`;
         total += Number(item.price);
       });
-
-      orderText += `\n*Total Amount:* ₹${total}`;
-
-      // WhatsApp URL (Replace with your actual WhatsApp number if needed)
-      const waUrl = `https://wa.me/?text=${encodeURIComponent(orderText)}`;
+      text += `\n*Total:* ₹${total}`;
+      
+      // WhatsApp Number configured: 917224802868
+      const waUrl = `https://wa.me/917224802868?text=${encodeURIComponent(text)}`;
       window.open(waUrl, '_blank');
     }
 
-    // Admin Authenticate
     function authenticateAdmin() {
-      const pin = document.getElementById('adminPinInput').value;
-      if (pin === '7224') {
+      if (document.getElementById('adminPinInput').value === '7224') {
         document.getElementById('adminAuth').classList.add('hidden');
         document.getElementById('adminPanel').classList.remove('hidden');
         renderAdminInventory();
-      } else {
-        alert("Incorrect PIN!");
-      }
+      } else { alert("Incorrect PIN!"); }
     }
 
     function addNewProduct() {
       const name = document.getElementById('pName').value.trim();
       const category = document.getElementById('pCategory').value.trim() || 'General';
       const price = document.getElementById('pPrice').value.trim();
-      const image = document.getElementById('pImg').value.trim() || 'https://via.placeholder.com/250';
+      const image = document.getElementById('pImg').value.trim() || 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400';
       const sizesInput = document.getElementById('pSizes').value.trim();
-
-      if (!name || !price) {
-        alert("Please enter Name and Price.");
-        return;
-      }
-
+      if (!name || !price) { alert("Enter Name and Price."); return; }
       const sizes = sizesInput ? sizesInput.split(',').map(s => s.trim()) : ["S", "M", "L", "XL"];
 
-      const newProduct = {
-        id: Date.now(),
-        name,
-        category,
-        price: Number(price),
-        sizes,
-        image
-      };
-
-      products.push(newProduct);
+      products.push({ id: Date.now(), name, category, price: Number(price), sizes, image });
       saveProducts();
       renderCategories();
       renderProducts();
       renderAdminInventory();
-
-      // Clear Inputs
       document.getElementById('pName').value = '';
       document.getElementById('pCategory').value = '';
       document.getElementById('pPrice').value = '';
       document.getElementById('pImg').value = '';
       document.getElementById('pSizes').value = '';
-
       alert("Product added successfully!");
     }
 
@@ -666,10 +325,13 @@
     }
 
     function renderAdminInventory() {
-      const list = document.getElementById('adminProductList');
-      list.innerHTML = products.map(p => `
+      document.getElementById('adminProductList').innerHTML = products.map(p => `
         <div style="display:flex; justify-content:space-between; align-items:center; background:white; padding:0.8rem; border-radius:6px; margin-bottom:0.5rem; border:1px solid #e2e8f0;">
-          <div>
-            <strong>${p.name}</strong> (${p.category \vert{}\vert{} 'General'}) - ₹${p.price}
-            <br><small>Sizes: ${p.sizes ? p.sizes.join(', ') : 'N/A'}</small>
-      
+          <div><strong>${p.name}</strong> (${p.category}) - ₹${p.price}</div>
+          <button onclick="deleteProduct(${p.id})" style="color:red; cursor:pointer;">Delete</button>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>
